@@ -1,0 +1,173 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Magestore
+ * 
+ * NOTICE OF LICENSE
+ * 
+ * This source file is subject to the Magestore.com license that is
+ * available through the world-wide-web at this URL:
+ * http://www.magestore.com/license-agreement.html
+ * 
+ * DISCLAIMER
+ * 
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ * 
+ * @category    Magestore
+ * @package     Magestore_SolutionPartner
+ * @copyright   Copyright (c) 2012 Magestore (http://www.magestore.com/)
+ * @license     http://www.magestore.com/license-agreement.html
+ */
+-->
+<config>
+    <modules>
+        <Magestore_SolutionPartner>
+            <version>0.1.0</version>
+        </Magestore_SolutionPartner>
+    </modules>
+    <frontend>
+        <routers>
+            <solutionpartner>
+                <use>standard</use>
+                <args>
+                    <module>Magestore_SolutionPartner</module>
+                    <frontName>solutionpartner</frontName>
+                </args>
+            </solutionpartner>
+        </routers>
+        <layout>
+            <updates>
+                <solutionpartner>
+                    <file>solutionpartner.xml</file>
+                </solutionpartner>
+            </updates>
+        </layout>
+        <translate>
+            <modules>
+                <Magestore_SolutionPartner>
+                    <files>
+                        <default>Magestore_SolutionPartner.csv</default>
+                    </files>
+                </Magestore_SolutionPartner>
+            </modules>
+        </translate>
+    </frontend>
+    <admin>
+        <routers>
+            <solutionpartneradmin>
+                <use>admin</use>
+                <args>
+                    <module>Magestore_SolutionPartner</module>
+                    <frontName>solutionpartneradmin</frontName>
+                </args>
+            </solutionpartneradmin>
+        </routers>
+    </admin>
+    <adminhtml>
+        <layout>
+            <updates>
+                <solutionpartner>
+                    <file>solutionpartner.xml</file>
+                </solutionpartner>
+            </updates>
+        </layout>
+        <translate>
+            <modules>
+                <Magestore_SolutionPartner>
+                    <files>
+                        <default>Magestore_SolutionPartner.csv</default>
+                    </files>
+                </Magestore_SolutionPartner>
+            </modules>
+        </translate>
+    </adminhtml>   
+    <global>
+        <models>
+            <solutionpartner>
+                <class>Magestore_SolutionPartner_Model</class>
+                <resourceModel>solutionpartner_mysql4</resourceModel>
+            </solutionpartner>
+            <solutionpartner_mysql4>
+                <class>Magestore_SolutionPartner_Model_Mysql4</class>
+                <entities>
+                    <partner>
+                        <table>solutionpartner_partner</table>
+                    </partner>
+                    <merchant>
+                        <table>solutionpartner_merchant</table>
+                    </merchant>
+                </entities>
+            </solutionpartner_mysql4>
+        </models>
+        <resources>
+            <solutionpartner_setup>
+                <setup>
+                    <module>Magestore_SolutionPartner</module>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </solutionpartner_setup>
+            <solutionpartner_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </solutionpartner_write>
+            <solutionpartner_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </solutionpartner_read>
+        </resources>
+        <blocks>
+            <solutionpartner>
+                <class>Magestore_SolutionPartner_Block</class>
+            </solutionpartner>
+        </blocks>
+        <helpers>
+            <solutionpartner>
+                <class>Magestore_SolutionPartner_Helper</class>
+            </solutionpartner>
+        </helpers>
+        <!-- <events>
+            <controller_action_predispatch>
+                <observers>
+                    <solutionpartner_observers>
+                        <class>solutionpartner/observer</class>
+                        <method>controllerActionPredispatch</method>
+                    </solutionpartner_observers>
+                </observers>
+            </controller_action_predispatch>
+        </events> -->
+    </global>
+    <default>
+        <solutionpartner>
+            <general>
+                <enable>1</enable>
+                <landing_page></landing_page>
+                <news_page></news_page>
+                <resources_page></resources_page>
+                <success_message><![CDATA[<p>Thank you for your registration to our Partner program. We will contact you as soon as possible.</p>]]></success_message>
+                <locked_ips></locked_ips>
+                <term><![CDATA[<p>Please read the following document containing the Terms and Conditions carefully before joining Magestore Partner program. The Partner shall be authorized to purchase the Products from Magestore for the purpose of using/reselling them to final customers. Magestore reserves the right to cancel the agreement between Magestore and the Partner in case of violation of the terms and conditions below.</p>
+<p><strong>Pricing</strong></p>
+<p>The resale price advertised by the Partner must not be lower than the product price listed on the Magestore&rsquo;s website</p>
+<p>When Magestore runs a Promotion giving special discount, Partners will enjoy either the Partner discount or the promotion discount, depending on which rate is higher.</p>
+<p><strong>Support</strong></p>
+<p>Magestore offers Partners Lifetime support Free for all of our paid products and services. We do not provide support at the direct request of Partners&rsquo; end customers. Support includes answering questions related to our products, bug/error fixing to make sure our products work well in your site exactly like our demo. Support does not include customizing our product to fit your own needs; customization request will require some fee (basically $20/hour). We also support for free products, however you will have to purchase support package for 1 month ($20) or lifetime ($50). To ask for support or report bugs, please submit a ticket to our <a href="http://support.magestore.com/">Support system</a>. Please kindly understand that tickets that arrive at our weekend will be processed when we&rsquo;re back to office on next Monday (GMT+7).</p>
+<p><strong>Product Update</strong></p>
+<p>Magestore does upgrades regularly to meet new requests or make our products work with later versions of Magento. Partners purchased a product from Magestore will get the updated versions for Free by logging in our store and go to My account&gt;My downloadable products. Follow our <a href="http://www.magestore.com/blog/">Blog</a>&nbsp;or newsletter for the updated information.</p>
+<p><strong><strong>Refund</strong></strong></p>
+<p>Magestore offers Partners 30-day money back guarantee for all of our products. We do not provide refunds to the Partner&rsquo; end-customers.&nbsp;Partners can get a full refund if you are not fully satisfied with our product during 30 days after your purchase. Please submit a ticket with your order information to our&nbsp;<a href="http://support.magestore.com/">ticket system</a>&nbsp;to request refund. You will receive refund within 7 days since your request is confirmed.&nbsp;All refund requests after 30 days are not accepted. Please remember that we will not refund any fee you paid for installation and customization services.&nbsp;We do not offer refund policy for Membership fee either. Once you purchase a membership plan of Magestore, cancellation is not allowed and you will not receive refund for any reason.</p>
+<p><strong><strong>Partner&rsquo;s badge</strong></strong></p>
+<p>The Partner shall be provided a Magestore&rsquo;s official Partner badge that you can place it on your website.</p>
+<p><strong><strong>Eligibility requirements</strong></strong></p>
+<p>The Partner account will be downgraded to a regular customer account if any of the above mentioned eligibility requirements are not met.</p>
+<p><strong><strong>Termination</strong></strong></p>
+<p>In case of violation of the terms and conditions, Magestore reserves the right to terminate the Partner relationship, or alter the terms of the Partner Program, or quit the Program at its own discretion.</p>]]>
+                </term>
+            </general>
+        </solutionpartner>
+    </default>
+</config>

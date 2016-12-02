@@ -1,0 +1,254 @@
+
+
+hhhhhhhhhhhhhhhhh
+
+<?php echo "<pre>";
+    var_dump('fdg');
+die('fdg'); ?>
+<?php $state = trim($this->getRequest()->getParam('check'),'/') ?>
+<?php if($state == "error"):?>
+    <input type="hidden" id="state" value="error">
+<?php endif;?>
+<?php if($this->isShown()): ?>
+    <div id="magestore-form-solutionpartner" >
+        <center class="bottom-form">
+            <div class="solutionpartner-registration-form fieldset" style="width:60%;text-align:center;">
+                <h2 class="legend"><?php echo $this->__('Solution Partner Registration Form') ?></h2>
+                <?php
+                $action = str_replace(array('http://', 'https://'), array('', ''), $this->getPostActionUrl());
+                if((!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off')
+                    || $_SERVER['SERVER_PORT'] == 443)
+                    $action = 'https://'.$action;
+                else
+                    $action = 'http://'.$action;
+                ?>
+                <form action="<?php echo $action ?>" method="post" id="solutionpartner-registration-form" enctype="multipart/form-data">
+                    <center>
+                        <div class="show_message" style="text-align:left; width: 98%; margin-top: 10px;">
+                            <?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+                        </div>
+                        <br/>
+                        <ul class="form-list-register" style="text-align:left;">
+                            <li class="row">
+                                <div class="col-sm-6">
+                                    <div class="input-layout">
+                                        <input type="text" name="name" value="<?php echo $this->htmlEscape($this->getFormData()->getName()) ?>" title="<?php echo $this->__('Name') ?>" id="solutionpartner:name" class="input-text required-entry" required/>
+                                        <span class="highlight"></span>
+                                        <span class="bar"></span>
+                                        <label for="solutionpartner:name" class="required"><?php echo $this->__('Name') ?><em>*</em></label>
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-6">
+
+                                    <div class="input-layout">
+                                        <input type="text" name="email" value="<?php echo $this->htmlEscape($this->getFormData()->getEmail()) ?>" title="<?php echo $this->__('Email') ?>" id="solutionpartner:email" class="input-text required-entry" required/>
+                                        <span class="highlight"></span>
+                                        <span class="bar"></span>
+                                        <label for="solutionpartner:email" class="required"><?php echo $this->__('Email') ?><em>*</em></label>
+                                    </div>
+                                </div>
+                                <!-- <div class="col-sm-6">
+
+					<div class="input-layout right">
+						<input type="text" name="position" value="<?php /*echo $this->htmlEscape($this->getFormData()->getPosition()) */?>" title="<?php /*echo $this->__('Title/ Position') */?>" id="solutionpartner:position" class="input-text required-entry" required />
+						<span class="highlight"></span>
+						<span class="bar"></span>
+						<label for="solutionpartner:position" class="required right-l"><?php /*echo $this->__('Title/ Position') */?><em>*</em></label>
+					</div>
+				</div>		-->
+                            </li>
+                            <!--<li class="row">
+
+				 <div class="col-sm-6">
+
+					<div class="input-layout right">
+						<input type="text" name="phone" value="<?php /*echo $this->htmlEscape($this->getFormData()->getPhone()) */?>" title="<?php /*echo $this->__('Phone') */?>" id="solutionpartner:phone" class="input-text required-entry" required />
+						<span class="highlight"></span>
+						<span class="bar"></span>
+						<label for="solutionpartner:phone" class="required right-l"><?php /*echo $this->__('Phone') */?><em>*</em></label>
+					</div>
+				</div>
+			</li>-->
+                            <li class="row">
+                                <div class="col-sm-6">
+
+                                    <div class="input-layout">
+                                        <input type="text" name="company" value="<?php echo $this->htmlEscape($this->getFormData()->getCompany()) ?>" title="<?php echo $this->__('Company Name') ?>" id="solutionpartner:company" class="input-text required-entry" required />
+                                        <span class="highlight"></span>
+                                        <span class="bar"></span>
+                                        <label for="solutionpartner:company" class="required"><?php echo $this->__('Company Name') ?><em>*</em></label>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+
+                                    <div class="input-layout right">
+                                        <input type="text" name="website" value="<?php echo $this->htmlEscape($this->getFormData()->getWebsite()) ?>" title="<?php echo $this->__('Company Website Url') ?>" id="solutionpartner:website" class="input-text required-entry" required />
+                                        <span class="highlight"></span>
+                                        <span class="bar"></span>
+                                        <label for="solutionpartner:website" class="required right-l"><?php echo $this->__('Company Website Url') ?><em>*</em></label>
+                                    </div>
+                                </div>
+                            </li>
+                            <!--<li class="row">
+				 <div class="col-sm-6">
+
+					<div class="input-layout">
+						<input type="text" name="company_address" value="<?php /*echo $this->htmlEscape($this->getFormData()->getCompanyAddress()) */?>" title="<?php /*echo $this->__('Company Address') */?>" id="solutionpartner:company_address" class="input-text required-entry" required />
+						<span class="highlight"></span>
+						<span class="bar"></span>
+						<label for="solutionpartner:company_address" class="required"><?php /*echo $this->__('Company Address') */?><em>*</em></label>
+					</div>
+				</div>
+				 <div class="col-sm-6">
+					<label for="solutionpartner:country" class="required right-l"><?php /*echo $this->__('Located Country') */?><em>*</em></label>
+					<div class="input-box right">
+						<select name="country" title="<?php /*echo $this->__('Located country') */?>" id="solutionpartner:country" class="input-text required-entry" >
+							<?php /*echo $this->getCountryOption() */?>
+						</select>
+					</div>
+				</div>
+			</li>-->
+                            <!--<li class="row">
+				<div class="col-md-12">
+					<label for="solutionpartner:logo"><?php /*echo $this->__('Logo') */?></label>
+					<div class="input-box">
+						<input type="file" name="logo" id="solutionpartner:logo" class="input-file" />
+					</div>
+				</div>
+			</li>-->
+                            <!--<li>
+				<label>Select solutionpartner type:</label>
+				<div class="input-radio">
+					<label for="TheRadioField1"><input <?php /*if($this->getFormData()->getPartnerTypeRegister()==2) echo 'checked'*/?> class="validate-one-required-by-name" id="TheRadioField1" type="radio" name="solutionpartner_type_register" value="2"> <?php /*echo $this->__('Get 25 licenses at $1000')*/?></label>
+					<label for="TheRadioField2"><input <?php /*if($this->getFormData()->getPartnerTypeRegister()==1) echo 'checked'*/?> class="validate-one-required-by-name" id="TheRadioField2" style="margin-left: 55px" type="radio" name="solutionpartner_type_register" value="1"> <?php /*echo $this->__('Get discounts based on accumulated revenue')*/?></label>
+				</div>
+			</li>	-->
+                            <!--<li class="row">
+				<div class="col-md-6">
+					<label class="how-many" for="solutionpartner:total_customers"><?php /*echo $this->__('How many Magento customers do you have?') */?></label>
+					<div class="input-box">
+						<select name="total_customers" title="<?php /*echo $this->__('How many Magento customers do you have?') */?>" id="solutionpartner:total_customers" class="input-text required-entry" >
+							<?php /*echo $this->getTotalCustomerOption() */?>
+						</select>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<label for="solutionpartner:monthly_revenue"><?php /*echo $this->__('What is your company\'s total monthly revenue from Magento projects?') */?></label>
+					<div class="input-box">
+						<select name="monthly_revenue" title="<?php /*echo $this->__('What is your company\'s total monthly revenue from Magento projects?') */?>" id="solutionpartner:monthly_revenue" class="input-text required-entry" >
+							<?php /*echo $this->getMonthlyRevenueOption() */?>
+						</select>
+					</div>
+				</div>
+			</li>
+			-->
+                            <!--
+			<li class="fields">
+				 <div class="field">
+					<label for="solutionpartner:total_customers" class="required"><em>*</em><?php /*echo $this->__('How many Magento customers do you have?') */?></label>
+					<div class="input-box">
+						<select name="total_customers" title="<?php /*echo $this->__('How many Magento customers do you have?') */?>" id="solutionpartner:total_customers" class="input-text required-entry" >
+							<?php /*echo $this->getTotalCustomerOption() */?>
+						</select>
+					</div>
+				</div>
+				 <div class="field">
+					<label for="solutionpartner:monthly_revenue" class="required"><em>*</em><?php /*echo $this->__('What is your company\'s total monthly revenue from Magento projects?') */?></label>
+					<div class="input-box">
+						<select name="monthly_revenue" title="<?php /*echo $this->__('What is your company\'s total monthly revenue from Magento projects?') */?>" id="solutionpartner:monthly_revenue" class="input-text required-entry" >
+							<?php /*echo $this->getMonthlyRevenueOption() */?>
+						</select>
+					</div>
+				</div>
+			</li>
+
+			<!--<li class="row">
+				<div class="col-md-12">
+					<label for="solutionpartner:comment"><?php /*echo $this->__('Any other comment') */?></label>
+					<div class="input-comment">
+						<textarea type="text" style="width:100%;" name="comment" id="solutionpartner:comment" class="input-text"><?php /*echo $this->htmlEscape($this->getFormData()->getComment()) */?></textarea>
+					</div>
+				</div>
+			</li>-->
+
+                            <li class="row">
+                                <div class="col-md-12">
+                                    <label for="solutionpartner:term"><?php echo $this->__('Terms and Conditions') ?></label>
+                                    <div class="input-box term-condition">
+                                        <!--<div name="term" id="solutionpartner:term" class="input-text solutionpartner_term"><?php /*echo $this->getTermCondition() */?></div>-->
+                                        <div name="term" id="solutionpartner:term" class="input-text solutionpartner_term">
+                                            <?php echo $this->getTermCondition()?>
+                                        </div>
+                                        <div class="checkbox-group">
+                                            <input id="checkboxcaptcha" class="required-entry" type="checkbox" name="read" value="captcha"/>
+                                            <label for="checkboxcaptcha" class="label--checkbox">
+                                                <span class="check"></span>
+                                                <span class="box-check"></span>
+                                                <?php echo $this->__(' I have read and agree to the Terms and Conditions for Partners.*')?>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="row">
+                                <div class="col-md-3"><label class="verification" for="solutionpartner:captcha" class="required"><?php echo $this->__('Verification Code') ?><em>*</em></label></div>
+                                <div class="col-md-9">
+                                    <?php echo $this->getLayout()->createBlock('magestore_recaptcha/captcha')->toHtml(); ?>
+                                    <!--<div class="input-captcha">
+						<img src="<?php /*echo $this->getCaptchaUrl();*/?>" id="solutionpartner_captcha_image" />
+						<span id="solutionpartner-please-wait-captcha" style="display:none;" class="opc-please-wait">
+							<img src="<?php /*echo $this->getSkinUrl('images/opc-ajax-loader.gif') */?>" class="v-middle" alt="" /> &nbsp; <?php /*echo $this->__('Getting new verification code') */?>...
+						</span>
+						<a href="javascript:void(0);" onclick="refreshCaptchaImage();return false;" id="solutionpartner-captcha-link"><?php /*echo $this->__("Refresh"); */?></a>
+						<input type="text" name="captcha" title="<?php /*echo $this->__('Verification Code') */?>" id="solutionpartner:captcha" class="input-text required-entry" />
+					</div>-->
+                                </div>
+                            </li>
+                        </ul>
+                        <div class="buttons-set" style="margin: 0 0 10px;padding: 0;">
+                            <!--<p class="required" style="text-align:center;"><?php echo $this->__('* Required Fields') ?></p>-->
+                            <center>
+                                <button type="submit" title="<?php echo $this->__('REGISTER') ?>" class="button" style="float:none;"><span><span><?php echo $this->__('REGISTER') ?></span></span></button>
+                            </center>
+                        </div>
+                    </center>
+                </form>
+                <script type="text/javascript">
+                    //<![CDATA[
+                    var dataForm = new VarienForm('solutionpartner-registration-form', false);
+
+                    var count_refresh_captcha = 0;
+
+                    function refreshCaptchaImage(){
+                        count_refresh_captcha++;
+                        url = '<?php echo $this->getRefreshCaptchaUrl() ?>';
+                        $('solutionpartner-captcha-link').hide();
+                        $('solutionpartner_captcha_image').src = '<?php echo $this->getSkinUrl('images/opc-ajax-loader.gif') ?>';
+                        imageCapcha = new Image();
+                        imageCapcha.src = '<?php echo  $this->getUrl('solutionpartner/register/captcha') . time() ?>' +'-'+ count_refresh_captcha;
+                        $('solutionpartner_captcha_image').src = imageCapcha.src;
+                        $('solutionpartner-captcha-link').show();
+                    }
+
+                    //]]>
+                </script>
+            </div>
+        </center>
+    </div>
+    <style type="text/css">
+        .form-list input.input-text{height:30px;padding:0 5px;}
+        .form-list select{height:32px;padding:5px;}
+        .form-list li.wide textarea{padding-left:5px;padding-right:5px;}
+        .show_message .messages{
+            float: left;
+        }
+
+    </style>
+<?php else: ?>
+    <style type="text/css">
+        #show-solutionpartner-form, #first-res{
+            display:none !important;
+        }
+    </style>
+<?php endif ?>
