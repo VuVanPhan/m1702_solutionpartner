@@ -1,0 +1,105 @@
+<!--@subject Magestore.com: New solution partner registration [{{var solutionpartner.getEmail()}}]@-->
+<!--@vars
+{"store url=\"\"":"Store Url",
+"skin url=\"images/logo_email.gif\" _area='frontend'":"Email Logo Image",
+"htmlescape var=$solutionpartner.name":"Partner Name",
+"var solutionpartner.email":"Partner Email"}
+@-->
+
+<!--@styles
+body,td { color:#2f2f2f; font:11px/1.35em Verdana, Arial, Helvetica, sans-serif; }
+@-->
+
+<body style="background:#F6F6F6; font-family:Verdana, Arial, Helvetica, sans-serif; font-size:12px; margin:0; padding:0;">
+<div style="background:#F6F6F6; font-family:Verdana, Arial, Helvetica, sans-serif; font-size:12px; margin:0; padding:0;">
+<table cellspacing="0" cellpadding="0" border="0" height="100%" width="100%">
+        <tr>
+            <td align="center" valign="top" style="padding:20px 0 20px 0">
+                <!-- [ header starts here] -->
+                <table bgcolor="FFFFFF" cellspacing="0" cellpadding="10" border="0" width="650" style="border:1px solid #E0E0E0;">
+                    <tr>
+                        <td valign="top">
+                            <a href="{{store url=''}}"><img src="{{skin url="magestore/solutionpartner/images/logo_email.gif" _area='frontend'}}" alt="{{var store.getFrontendName()}}"  style="margin-bottom:10px;" border="0"/></a>
+                        </td>
+                        <td>
+                            <a href="{{store url=''}}"><img src="{{media url="{{var solutionpartner.getCompanyLogo()}}" _area='frontend'}}" alt="{{var store.getFrontendName()}}"  style="margin-bottom:10px;" border="0"/></a>
+                        </td>
+                    </tr>
+                <!-- [ middle starts here] -->
+                    <tr>
+                        <td valign="top">
+                            <h1 style="font-size:22px; font-weight:normal; line-height:22px; margin:0 0 11px 0;"">Hi,</h1>
+                            <p style="font-size:12px; line-height:16px; margin:0 0 16px 0;">
+								There is new solution partner registration from Magestore.com. Please go to <a href="http://magento1702.com/index.php/solutionpartneradmin/adminhtml_solutionpartner/index">back-end</a> to check this.
+							</p>
+                            <p style="font-size:12px; line-height:16px; margin:0;">
+								Below is registration information.
+								<br/>
+							</p>
+                        </td>
+                    </tr>
+                    <!--<table>-->
+                        <tr>
+                            <td style="width: 150px;">Name</td><td>{{var solutionpartner.getName()}}</td>
+                        </tr>
+                        <tr>
+                            <td style="width: 150px;">Email</td><td>{{var solutionpartner.getEmail()}}</td>
+                        </tr>
+                        <tr>
+                            <td style="width: 150px;">Phone</td><td>{{var solutionpartner.getPhone()}}</td>
+                        </tr>
+                        <tr>
+                            <td style="width: 150px;">Company Name</td><td>{{var solutionpartner.getCompanyName()}}</td>
+                        </tr>
+                        <tr>
+                            <td style="width: 150px;">Website</td><td>{{var solutionpartner.getWebsite()}}</td>
+                        </tr>
+                        <tr>
+                            <td style="width: 150px;">Company Logo</td><td><a href="{{store url=""}}"><img src="{{media url="{{var solutionpartner.getCompanyLogo()}}" _area='frontend'}}" alt="{{var store.getFrontendName()}}"  style="margin-bottom:10px;" border="0"/></a></td>
+                        </tr>
+                        <tr style="width: 150px;">
+                            <td>Address</td><td>{{var solutionpartner.getAddress()}}</td>
+                        </tr>
+                        <tr style="width: 150px;">
+                            <td>Country</td><td>{{var solutionpartner.getCountry()}}</td>
+                        </tr>
+                        <tr style="width: 150px;">
+                            <td>Description</td><td>{{var solutionpartner.getDescription()}}</td>
+                        </tr>
+                        <tr style="width: 150px;">
+                            <td>Founded In</td><td>{{var solutionpartner.getFoundedIn()}}</td>
+                        </tr>
+                        <tr style="width: 150px;">
+                            <td>Certified Developer</td><td>{{var solutionpartner.getCertifiedDev()}}</td>
+                        </tr>
+                        <tr style="width: 150px;">
+                            <td>Number Employees</td><td>{{var solutionpartner.getNumberEmployees()}}</td>
+                        </tr>
+                        <tr style="width: 150px;">
+                            <td>Service</td><td>{{var solutionpartner.getService()}}</td>
+                        </tr>
+                        <tr style="width: 150px;">
+                            <td>Project Year</td><td>{{var solutionpartner.getProjectYear()}}</td>
+                        </tr>
+                        <tr style="width: 150px;">
+                            <td>Project Size</td><td>{{var solutionpartner.getProjectSize()}}</td>
+                        </tr>
+                        <tr style="width: 150px;">
+                            <td>Hourly Rate</td><td>{{var solutionpartner.getHourlyRate()}}</td>
+                        </tr>
+                        <tr style="width: 150px;">
+                            <td>Total Customers</td><td>{{var solutionpartner.getTotalCustomers()}}</td>
+                        </tr>
+                        <tr style="width: 150px;">
+                            <td>Monthly Revenue</td><td>{{var solutionpartner.getMonthlyRevenue()}}</td>
+                        </tr>
+                    <!--</table>-->
+                    <tr>
+                        <td bgcolor="#EAEAEA" align="center" style="background:#EAEAEA; text-align:left;"><p style="font-size:12px; margin:0;">Yours Sincerely,<br/><strong>Magestore Sales Department.</strong></p></td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+</div>
+</body>

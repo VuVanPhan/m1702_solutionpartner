@@ -1,0 +1,185 @@
+
+<?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+<div class="my-account">
+    <div class="page-title">
+        <h1><?php echo $this->__('Edit Solution Partner Account') ?></h1>
+    </div>
+</div>
+
+<form action="<?php echo $this->getPostActionUrl() ?>" method="post" id="solutionpartner-registration-form" enctype="multipart/form-data">
+    <div class="solutionpartner-registration-form fieldset" >
+        <h2 class="legend"><?php echo $this->__('Solution Partner Information') ?></h2>
+        <br/>
+        <ul class="form-list" style="width:550px;text-align:left;">
+            <li class="fields">
+                <div class="field">
+                    <label for="solutionpartner:name" class="required"><em>*</em><?php echo $this->__('Name') ?></label>
+                    <div class="input-box">
+                        <input type="text" name="name" value="<?php echo $this->htmlEscape($this->getFormEditData()->getName()) ?>" title="<?php echo $this->__('Name') ?>" id="solutionpartner:name" class="input-text required-entry" />
+                    </div>
+                </div>
+                <div class="field">
+                    <label for="solutionpartner:email" class="required"><em>*</em><?php echo $this->__('Email') ?></label>
+                    <div class="input-box">
+                        <input type="text" readonly name="email" value="<?php echo $this->htmlEscape($this->getFormEditData()->getEmail()) ?>" title="<?php echo $this->__('Email') ?>" id="solutionpartner:email" class="input-text required-entry" />
+                    </div>
+                </div>
+            </li>
+            <li class="wide">
+                <div class="field">
+                    <label for="solutionpartner:phone" class="required"><em>*</em><?php echo $this->__('Phone') ?></label>
+                    <div class="input-box">
+                        <input type="text" name="phone" value="<?php echo $this->htmlEscape($this->getFormEditData()->getPhone()) ?>" title="<?php echo $this->__('Phone') ?>" id="solutionpartner:phone" class="input-text required-entry" />
+                    </div>
+                </div>
+            </li>
+            <li class="fields">
+                <div class="field">
+                    <label for="solutionpartner:company_name" class="required"><em>*</em><?php echo $this->__('Company Name') ?></label>
+                    <div class="input-box">
+                        <input type="text" name="company_name" value="<?php echo $this->htmlEscape($this->getFormEditData()->getCompanyName()) ?>" title="<?php echo $this->__('Company Name') ?>" id="solutionpartner:company_name" class="input-text required-entry" />
+                    </div>
+                </div>
+                <div class="field">
+                    <label for="solutionpartner:website" class="required"><em>*</em><?php echo $this->__('Company Website Url') ?></label>
+                    <div class="input-box">
+                        <input type="text" name="website" value="<?php echo $this->htmlEscape($this->getFormEditData()->getWebsite()) ?>" title="<?php echo $this->__('Company Website Url') ?>" id="solutionpartner:website" class="input-text required-entry" />
+                    </div>
+                </div>
+            </li>
+            <li class="fields">
+                <div class="field">
+                    <label for="solutionpartner:address" class="required"><em>*</em><?php echo $this->__('Company Address') ?></label>
+                    <div class="input-box">
+                        <input type="text" name="address" value="<?php echo $this->htmlEscape($this->getFormEditData()->getAddress()) ?>" title="<?php echo $this->__('Company Address') ?>" id="solutionpartner:address" class="input-text required-entry" />
+                    </div>
+                </div>
+                <div class="field">
+                    <label for="solutionpartner:country" class="required"><em>*</em><?php echo $this->__('Located Country') ?></label>
+                    <div class="input-box">
+                        <select name="country" title="<?php echo $this->__('Located country') ?>" id="solutionpartner:country" class="input-text required-entry" >
+                            <?php echo $this->getCountryOption() ?>
+                        </select>
+                    </div>
+                </div>
+            </li>
+            <li class="wide">
+                <label for="solutionpartner:company_logo"><?php echo $this->__('Company Logo') ?></label>
+                <div class="input-box">
+                    <?php if($this->getFormEditData()->getCompanyLogo()): ?>
+                        <a onclick="imagePreview('logo_image'); return false;" href="<?php echo Mage::getBaseUrl('media').DS.$this->getFormEditData()->getCompanyLogo()?>">
+
+                            <img id="logo_image" class="small-image-preview v-middle" width="22" height="22" alt="<?php echo $this->getFormEditData()->getCompanyLogo()?>"
+                                 title="<?php echo $this->getFormEditData()->getCompanyLogo()?>"
+                                 src="<?php echo Mage::getBaseUrl('media').DS.$this->getFormEditData()->getCompanyLogo()?>">
+                        </a>
+                    <?php endif; ?>
+                    <input type="file" name="company_logo" id="solutionpartner:company_logo" class="input-file" />
+                </div>
+            </li>
+            <li class="wide">
+                <label for="solutionpartner:description" class="required"><em>*</em><?php echo $this->__('Description') ?></label>
+                <div class="input-box">
+                    <textarea type="text" name="comment" id="solutionpartner:description" class="input-text"><?php echo $this->htmlEscape($this->getFormEditData()->getComment()) ?></textarea>
+                </div>
+            </li>
+            <li class="fields">
+                <div class="field">
+                    <label for="solutionpartner:founded_in"><?php echo $this->__('Founded In') ?></label>
+                    <div class="input-box">
+                        <input type="text" name="founded_in" value="<?php echo $this->htmlEscape($this->getFormEditData()->getFoundedIn()) ?>" title="<?php echo $this->__('Founded In') ?>" id="solutionpartner:founded_in" class="input-text required-entry" />
+                    </div>
+                </div>
+                <div class="field">
+                    <label for="solutionpartner:certified_dev"><?php echo $this->__('Certified Developer') ?></label>
+                    <div class="input-box">
+                        <input type="text" name="certified_dev" value="<?php echo $this->htmlEscape($this->getFormEditData()->getFoundedIn()) ?>" title="<?php echo $this->__('Founded In') ?>" id="solutionpartner:certified_dev" class="input-text required-entry" />
+                    </div>
+                </div>
+            </li>
+            <li class="fields">
+                <div class="field">
+                    <label for="solutionpartner:number_employees"><?php echo $this->__('Number Employees') ?></label>
+                    <div class="input-box">
+                        <select name="number_employees" title="<?php echo $this->__('Number Employees') ?>" id="solutionpartner:number_employees" class="input-text required-entry" >
+                            <?php echo $this->getNumberEmployeesOption() ?>
+                        </select>
+                    </div>
+                </div>
+                <div class="field">
+                    <label for="solutionpartner:service"><?php echo $this->__('Service') ?></label>
+                    <div class="input-box">
+                        <select name="service" title="<?php echo $this->__('Service') ?>" id="solutionpartner:service" class="input-text required-entry" >
+                            <?php echo $this->getServiceOption() ?>
+                        </select>
+                    </div>
+                </div>
+            </li>
+            <li class="wide">
+                <div class="field">
+                    <label for="solutionpartner:project_year"><?php echo $this->__('How many projects you magento in a year?') ?></label>
+                    <div class="input-box">
+                        <input type="text" name="project_year" value="<?php echo $this->htmlEscape($this->getFormEditData()->getFoundedIn()) ?>" title="<?php echo $this->__('How many projects you magento in a year?') ?>" id="solutionpartner:project_year" class="input-text required-entry" />
+                    </div>
+                </div>
+            </li>
+            <li class="fields">
+                <div class="field">
+                    <label for="solutionpartner:project_size"><?php echo $this->__('Project Size') ?></label>
+                    <div class="input-box">
+                        <select name="project_size" title="<?php echo $this->__('Project Size') ?>" id="solutionpartner:project_size" class="input-text required-entry" >
+                            <?php echo $this->getProjectSizeOption() ?>
+                        </select>
+                    </div>
+                </div>
+                <div class="field">
+                    <label for="solutionpartner:hourly_rate"><?php echo $this->__('Hourly Rate') ?></label>
+                    <div class="input-box">
+                        <select name="hourly_rate" title="<?php echo $this->__('Hourly Rate') ?>" id="solutionpartner:hourly_rate" class="input-text required-entry" >
+                            <?php echo $this->getHourlyRateOption() ?>
+                        </select>
+                    </div>
+                </div>
+            </li>
+        </ul>
+        <script type="text/javascript">
+            //<![CDATA[
+            var dataForm = new VarienForm('solutionpartner-registration-form', false);
+
+            // function refreshCaptchaImage(){
+            // url = '<?php echo $this->getRefreshCaptchaUrl() ?>';
+            // $('partner_captcha_image').hide();
+            // $('partner-captcha-link').hide();
+            // $('partner-please-wait-captcha').show();
+            // refreshCaptcha = new Ajax.Request(url,{
+            // method: 'get',
+            // onSuccess: function(transport){
+            // imageCapcha = new Image();
+            // imageCapcha.src = transport.responseText;
+            // $('partner_captcha_image').src = imageCapcha.src;
+            // $('partner-please-wait-captcha').hide();
+            // $('partner_captcha_image').show();
+            // $('partner-captcha-link').show();
+            // },
+            // onException: function (xhr, e){
+            // $('partner-please-wait-captcha').hide();
+            // $('partner_captcha_images').show();
+            // $('partner-captcha-link').show();
+            // alert('Exception: ' + e);
+            // },
+            // });
+            // }
+            //]]>
+        </script>
+    </div>
+    <div class="buttons-set">
+        <p class="required"><?php echo $this->__('* Required Fields') ?></p>
+        <p class="back-link"><a href="<?php echo $this->getUrl('solutionpartner/customer') ?>"><small>&laquo; </small><?php echo $this->__('Back') ?></a></p>
+        <button type="submit" title="<?php echo $this->__('Save') ?>" class="button" style="float:none;"><span><span><?php echo $this->__('Save') ?></span></span></button>
+    </div>
+</form>
+<style type="text/css">
+    .form-list input.input-text{height:30px;padding:0 5px;}
+    .form-list select{height:32px;padding:5px;}
+    .form-list li.wide textarea{padding-left:5px;padding-right:5px;}
+</style>

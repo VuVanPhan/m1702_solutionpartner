@@ -1,0 +1,14 @@
+<?php
+/**
+ * Sales history template
+ */
+?>
+<?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+<div class="my-account">
+    <div class="page-title">
+        <h1><?php echo $this->__('Reports') ?></h1>
+    </div>
+</div>
+
+<?php echo $this->getChildHtml('customer_reports_miniform') ?>
+<?php echo $this->getChildHtml('customer_reports_sales') ?>

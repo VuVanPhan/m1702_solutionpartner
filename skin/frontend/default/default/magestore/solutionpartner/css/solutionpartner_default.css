@@ -1,0 +1,44 @@
+#magestore-form-solutionpartner .form-list-register li.row
+{
+    clear: both;
+}
+
+#magestore-form-solutionpartner .form-list-register li.row .col-sm-6
+{
+    width: 50%;
+    float: left;
+    margin: 5px 0;
+}
+
+#magestore-form-solutionpartner .form-list-register li.row .col-sm-12
+{
+    width: 100%;
+    float: left;
+    margin: 5px 0;
+}
+
+#magestore-form-solutionpartner .form-list-register li.row .solutionpartner_term
+{
+    height: 150px;
+    overflow-y: scroll;
+}
+
+#magestore-form-solutionpartner .form-list-register li.row .description-company
+{
+    width: 100%;
+    height: 100px;
+    overflow-y: scroll;
+}
+
+#magestore-form-solutionpartner .form-list-register li.row .solutionpartner-register-phone,
+#magestore-form-solutionpartner .form-list-register li.row .solutionpartner-register-project-year
+{
+    width: 100%;
+}
+
+
+
+.solution-miniform .statistic-transactions.block-content
+{
+    padding-left: 0px;
+}

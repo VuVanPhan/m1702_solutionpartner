@@ -1,0 +1,38 @@
+<?php
+/**
+ * Statistic transactions template
+ */
+?>
+<?php //$totalStatistic = $this->getTotalStatistic() ?>
+<div class="fieldset solution-miniform">
+    <h2 class="legend"><?php echo $this->__('Solution Partner Account: ') ?></h2>
+    <div class="statistic-transactions block-content">
+        <div class="">
+            <p>
+                <strong>
+                    <?php echo $this->__('Total Discount: ') ?>
+                </strong>
+                <span><?php echo $this->getPartnerDiscount() ?></span>
+            </p>
+            <p>
+                <strong>
+                    <?php echo $this->__('Accumulated Revenue: ') ?>
+                </strong>
+                <span><?php echo $this->getCumulativeAmount() ?></span>
+            </p>
+            <p>
+                <strong>
+                    <?php echo $this->__('Balance Due: ') ?>
+                </strong>
+                <span><?php echo $this->getBalanceDue() ?></span>
+            </p>
+            <p>
+                <strong>
+                    <?php echo $this->__('Commitment Period: ') ?>
+                </strong>
+                <span><?php echo $this->getCommitmentPeriod() ?></span>
+            </p>
+        </div>
+    </div>
+    <div class="clear"></div>
+</div>
