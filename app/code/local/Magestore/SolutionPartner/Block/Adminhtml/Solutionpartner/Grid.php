@@ -47,13 +47,16 @@ class Magestore_SolutionPartner_Block_Adminhtml_Solutionpartner_Grid extends Mag
         $collection = Mage::getModel('solutionpartner/partner')->getCollection();
         $collection->getSelect()->joinLeft(
             array('order' => $collection->getTable('sales/order')),
-            'main_table.email = order.customer_email AND order.status = "complete"',
-            array(
+            'main_table.email = order.customer_email AND order.status = "complete"'
+            , array(
                 'order_id' => 'entity_id',
                 'order_status' => 'order.status',
-                'number_qtys' => 'count(order.entity_id)'
-            ))
+                'number_qtys' => 'count(order.entity_id)',
+                'total_revenue' => 'sum(order.grand_total)'
+            )
+        )
             ->group('main_table.solutionpartner_id');
+
         $this->setCollection($collection);
         return parent::_prepareCollection();
     }
@@ -124,15 +127,16 @@ class Magestore_SolutionPartner_Block_Adminhtml_Solutionpartner_Grid extends Mag
             'type' => 'datetime'
         ));
 
-        $this->addColumn('status', array(
+        $this->addColumn('solutionpartner_status', array(
             'header'    => Mage::helper('solutionpartner')->__('Status'),
             'align'     => 'left',
             'width'     => '80px',
-            'index'     => 'status',
+            'index'     => 'solutionpartner_status',
             'type'        => 'options',
             'options'     => array(
                 1 => 'Approve',
                 2 => 'Disapprove',
+                3 => 'Pending'
             ),
         ));
 
@@ -179,12 +183,12 @@ class Magestore_SolutionPartner_Block_Adminhtml_Solutionpartner_Grid extends Mag
         $statuses = Mage::getSingleton('solutionpartner/status')->getOptionArray();
 
         array_unshift($statuses, array('label'=>'', 'value'=>''));
-        $this->getMassactionBlock()->addItem('status', array(
+        $this->getMassactionBlock()->addItem('solutionpartner_status', array(
             'label'=> Mage::helper('solutionpartner')->__('Change status'),
             'url'    => $this->getUrl('*/*/massStatus', array('_current'=>true)),
             'additional' => array(
                 'visibility' => array(
-                    'name'    => 'status',
+                    'name'    => 'solutionpartner_status',
                     'type'    => 'select',
                     'class'    => 'required-entry',
                     'label'    => Mage::helper('solutionpartner')->__('Status'),

@@ -6,6 +6,9 @@ class Magestore_SolutionPartner_Block_Adminhtml_Solutionpartner_Edit_Tab_Order e
     {
         parent::__construct();
         $this->setId('entity_id');
+//        $this->setId('recurring_profile_orders')
+//            ->setUseAjax(true)
+//            ->setSkipGenerateContent(true);
         $this->setUseAjax(true);
         $this->setDefaultSort('created_at');
         $this->setDefaultDir('DESC');
@@ -14,10 +17,25 @@ class Magestore_SolutionPartner_Block_Adminhtml_Solutionpartner_Edit_Tab_Order e
 
     protected function _prepareCollection()
     {
-        $collection = Mage::getResourceModel('sales/order_grid_collection')
-            ->addFieldToFilter('entity_id',$this->getSolutionPartner()->getPlacedOrderIds());
+        // get collection order by customer id
+        $collections = Mage::getResourceModel('sales/order_grid_collection');
+        $collections->addFieldToFilter('customer_id',$this->getSolutionpartner()->getCustomerOrderIds());
+//        $collection->addFieldToFilter('status', array('closed', 'complete'));
 
-        $this->setCollection($collection);
+        foreach ($collections as $collection)
+        {
+            // get detail order by increment id
+            $order = Mage::getModel('sales/order')->load($collection->getIncrementId(), 'increment_id');
+            $orderItems = $order->getItemsCollection();
+            $array = array();
+            foreach ($orderItems as $item){
+                $array[] = $item->getName();
+            }
+
+            $collection->setProductName(implode(' - ', $array));
+        }
+
+        $this->setCollection($collections);
         return parent::_prepareCollection();
     }
 
@@ -30,6 +48,26 @@ class Magestore_SolutionPartner_Block_Adminhtml_Solutionpartner_Edit_Tab_Order e
             'type'  => 'text',
             'index' => 'increment_id',
             'renderer'  => 'solutionpartner/adminhtml_solutionpartner_renderer_tab_order',
+        ));
+
+        $this->addColumn('product_name', array(
+            'header' => Mage::helper('sales')->__('Product Name'),
+            'index' => 'product_name',
+            'type'  => 'text',
+        ));
+
+        $this->addColumn('base_grand_total', array(
+            'header' => Mage::helper('sales')->__('G.T. (Base)'),
+            'index' => 'base_grand_total',
+            'type'  => 'currency',
+            'currency' => 'base_currency_code',
+        ));
+
+        $this->addColumn('grand_total', array(
+            'header' => Mage::helper('sales')->__('G.T. (Purchased)'),
+            'index' => 'grand_total',
+            'type'  => 'currency',
+            'currency' => 'order_currency_code',
         ));
 
         if (!Mage::app()->isSingleStoreMode()) {
@@ -47,30 +85,6 @@ class Magestore_SolutionPartner_Block_Adminhtml_Solutionpartner_Edit_Tab_Order e
             'index' => 'created_at',
             'type' => 'datetime',
             'width' => '100px',
-        ));
-
-        $this->addColumn('billing_name', array(
-            'header' => Mage::helper('sales')->__('Bill to Name'),
-            'index' => 'billing_name',
-        ));
-
-        $this->addColumn('shipping_name', array(
-            'header' => Mage::helper('sales')->__('Ship to Name'),
-            'index' => 'shipping_name',
-        ));
-
-        $this->addColumn('base_grand_total', array(
-            'header' => Mage::helper('sales')->__('G.T. (Base)'),
-            'index' => 'base_grand_total',
-            'type'  => 'currency',
-            'currency' => 'base_currency_code',
-        ));
-
-        $this->addColumn('grand_total', array(
-            'header' => Mage::helper('sales')->__('G.T. (Purchased)'),
-            'index' => 'grand_total',
-            'type'  => 'currency',
-            'currency' => 'order_currency_code',
         ));
 
         $this->addColumn('status', array(

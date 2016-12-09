@@ -94,6 +94,33 @@
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
                         </success_message>
+                        <industry translate="label">
+                            <label>Industry</label>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>9</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[Note : You should write in the correct order. <br/> The value separated by commas. ","]]></comment>
+                        </industry>
+                        <project_size translate="label">
+                            <label>Project Size</label>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>11</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[Note : You should write in the correct order. <br/> The value separated by commas. ","]]></comment>
+                        </project_size>
+                        <hourly_rate translate="label">
+                            <label>Hourly Rate</label>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>13</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[Note : You should write in the correct order. <br/> The value separated by commas. ","]]></comment>
+                        </hourly_rate>
                         <locked_ips translate="label">
                             <label>Black List (ip addresses)</label>
                             <frontend_type>textarea</frontend_type>
@@ -101,7 +128,7 @@
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
-                            <comment></comment>
+                            <comment><![CDATA[Note : The value separated by commas. ","]]></comment>
                         </locked_ips>
                         <term translate="label">
                             <label>Term and Conditions</label>
@@ -114,6 +141,42 @@
                         </term>
                     </fields>
                 </general>
+                <email translate="label">
+                    <label>Email Configuration</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>10</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <registration translate="label">
+                            <label>New registration solution partner email template</label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>1</sort_order>
+                            <source_model>adminhtml/system_config_source_email_template</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </registration>
+                        <admin_registration translate="label">
+                            <label>New registration solution partner email template to admin</label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>10</sort_order>
+                            <source_model>adminhtml/system_config_source_email_template</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </admin_registration>
+                        <copy_to translate="label">
+                            <label>Send to others</label>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </copy_to>
+                    </fields>
+                </email>
             </groups>
         </solutionpartner>
     </sections>

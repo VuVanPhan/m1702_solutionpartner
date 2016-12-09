@@ -5,11 +5,7 @@ class Magestore_SolutionPartner_Block_Adminhtml_Solutionpartner_Renderer_Custome
 	public function render(Varien_Object $row) 
 	{
 		$html = null;
-//		echo "<pre>";
-//		var_dump($this->_getSolurionPartner($row->getSolutionpartnerId()));
-//		die();
-		$customer = $this->_getSolurionPartner($row->getSolutionpartnerId())->getCustomer();
-
+		$customer = $this->_getSolurionPartner($row->getSolutionpartnerId())->_getCustomer();
 
 		if($customer->getId()){
 			$html = '<a href="'.$this->getUrl('adminhtml/customer/edit',array('id'=>$customer->getId())).'" target="_blank">'

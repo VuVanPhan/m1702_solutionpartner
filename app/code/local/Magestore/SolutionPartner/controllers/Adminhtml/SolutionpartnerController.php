@@ -82,6 +82,11 @@ class Magestore_SolutionPartner_Adminhtml_SolutionpartnerController extends Mage
                 Mage::helper('adminhtml')->__('Solution Partner News')
             );
 
+            if ($model->getId())
+                $this->_title($model->getCompanyName());
+            else
+                $this->_title(Mage::helper('adminhtml')->__('Add New Solution Partner'));
+
             $this->getLayout()->getBlock('head')->setCanLoadExtJs(true);
             $this->_addContent($this->getLayout()->createBlock('solutionpartner/adminhtml_solutionpartner_edit'))
                 ->_addLeft($this->getLayout()->createBlock('solutionpartner/adminhtml_solutionpartner_edit_tabs'));
@@ -106,10 +111,10 @@ class Magestore_SolutionPartner_Adminhtml_SolutionpartnerController extends Mage
     public function saveAction()
     {
         if ($data = $this->getRequest()->getPost()) {
-            if (isset($_FILES['compane_logo']['name']) && $_FILES['compane_logo']['name'] != '') {
+            if (isset($_FILES['company_logo']['name']) && $_FILES['company_logo']['name'] != '') {
                 try {
                     /* Starting upload */    
-                    $uploader = new Varien_File_Uploader('compane_logo');
+                    $uploader = new Varien_File_Uploader('company_logo');
                     
                     // Any extention would work
                        $uploader->setAllowedExtensions(array('jpg','jpeg','gif','png'));
@@ -123,15 +128,15 @@ class Magestore_SolutionPartner_Adminhtml_SolutionpartnerController extends Mage
                             
                     // We set media as the upload dir
                     $path = Mage::getBaseDir('media') . DS ;
-                    $result = $uploader->save($path, $_FILES['compane_logo']['name'] );
-                    $data['compane_logo'] = $_FILES['compane_logo']['name'];
+                    $result = $uploader->save($path, $_FILES['company_logo']['name'] );
+                    $data['company_logo'] = $_FILES['company_logo']['name'];
                 } catch (Exception $e) {
-                    $data['compane_logo'] = $_FILES['filename']['name'];
+                    $data['company_logo'] = $_FILES['company_logo']['name'];
                 }
-            } elseif(isset($data['compane_logo']['delete']) && $data['compane_logo']['delete'] == '1') {
-                $data['compane_logo'] = '';
+            } elseif(isset($data['company_logo']['delete']) && $data['company_logo']['delete'] == '1') {
+                $data['company_logo'] = '';
             } else {
-                unset($data['compane_logo']);
+                unset($data['company_logo']);
             }
 
             $model = Mage::getModel('solutionpartner/partner');
@@ -141,7 +146,7 @@ class Magestore_SolutionPartner_Adminhtml_SolutionpartnerController extends Mage
             /*
 				Create customer when active partner
 			*/
-            if($model->getStatus() == '1'){
+            if($model->getSolutionpartnerStatus() == '1'){
                 $customer = Mage::getModel('customer/customer');
                 $customerList = $customer->getCollection()->addFieldTofilter('email',$model->getEmmail());
                 $websiteId = $model->getWebsiteId() ? $model->getWebsiteId() : 1;
@@ -165,12 +170,13 @@ class Magestore_SolutionPartner_Adminhtml_SolutionpartnerController extends Mage
             }
             
             try {
-                if ($model->getCreatedTime() == NULL || $model->getUpdateTime() == NULL) {
+                if ($model->getRegisteredDate() == NULL || $model->getUpdateTime() == NULL) {
                     $model->setRegisteredDate(now())
                         ->setUpdateTime(now());
                 } else {
                     $model->setUpdateTime(now());
                 }
+
                 $model->save();
                 Mage::getSingleton('adminhtml/session')->addSuccess(
                     Mage::helper('solutionpartner')->__('Solution Partner was successfully saved')
@@ -256,7 +262,7 @@ class Magestore_SolutionPartner_Adminhtml_SolutionpartnerController extends Mage
                 foreach ($solutionpartnerIds as $solutionpartnerId) {
                     Mage::getSingleton('solutionpartner/partner')
                         ->load($solutionpartnerId)
-                        ->setStatus($this->getRequest()->getParam('status'))
+                        ->setSolutionpartnerStatus($this->getRequest()->getParam('solutionpartner_status'))
                         ->setIsMassupdate(true)
                         ->save();
                 }

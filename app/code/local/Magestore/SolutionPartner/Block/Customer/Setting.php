@@ -36,12 +36,12 @@ class Magestore_SolutionPartner_Block_Customer_Setting extends Mage_Core_Block_T
         return $html_option;
     }
 
-    public function getServiceOption()
+    public function getIndustryOption()
     {
         $html_option = '';
-        $option = Mage::helper('solutionpartner')->getServiceList();
+        $option = Mage::helper('solutionpartner')->getIndustryList();
         foreach($option as $code=>$value){
-            $selected = ($code == $this->getFormEditData()->getService())? 'selected' : '';
+            $selected = ($code == $this->getFormEditData()->getIndustry())? 'selected' : '';
             $html_option .= '<option value="'.$code.'" '.$selected.'>'.$value.'</option>';
         }
         return $html_option;

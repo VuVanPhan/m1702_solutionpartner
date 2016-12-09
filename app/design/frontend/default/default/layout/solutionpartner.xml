@@ -33,12 +33,207 @@
     <customer_account>
         <!-- Magestore_SolutionPartner -->
         <reference name="customer_account_navigation">
-            <action method="addLink" translate="label" module="solutionpartner">
+            <action method="addLink" helper="solutionpartner/data/getEnableModule" translate="label" module="solutionpartner">
                 <name>solutionpartner</name>
                 <path>solutionpartner/customer</path>
                 <label>Solution Partner</label>
             </action>
         </reference>
-
     </customer_account>
+
+    <solutionpartner_default>
+        <update handle="page_two_columns_left_acc" />
+        <reference name="head">
+            <action method="addCss" ifconfig="solutionpartner/general/enable">
+                <styleSheet>magestore/solutionpartner/css/solutionpartner_default.css</styleSheet>
+            </action>
+        </reference>
+        <reference name="left">
+            <!-- <remove name="discount-on-top"/> -->
+            <remove name="interview"/>
+            <remove name="reviewsdisplay"/>
+            <remove name="lifetime-support-and-money-back"/>
+            <remove name="tags_popular"/>
+            <remove name="brandingbox"/>
+            <remove name="interview1"/>
+            <remove name="weexcept"/>
+            <remove name="promotions"/>
+            <remove name="reviewsdisplaynames"/>
+            <remove name="catalog.compare.sidebar"/>
+            <remove name="sale.reorder.sidebar"/>
+            <remove name="cart_sidebar"/>
+            <block type="solutionpartner/customer_navigation" ifconfig="solutionpartner/general/enable" befor="-" name="solutionpartner_navigator" template="solutionpartner/navigation.phtml">
+                <action method="setNavigationTitle">
+                    <title helper="solutionpartner/customer/getNavigationLabel" />
+                </action>
+                <action method="addLink" translate="label" module="solutionpartner">
+                    <name>welcome</name>
+                    <path>solutionpartner/customer</path>
+                    <label>Welcome page</label>
+                    <disabled>0</disabled>
+                    <order>6</order>
+                </action>
+                <!-- <action method="addLink" translate="label" module="partner">
+                    <name>news</name>
+                    <path>partner/account/news</path>
+                    <label>News</label>
+                    <disabled helper="partner/account/customerIsNotPartner" />
+                    <order>10</order>
+                </action>
+                <action method="addLink" translate="label" module="partner">
+                    <name>resource</name>
+                    <path>partner/account/resources</path>
+                    <label>Resources</label>
+                    <disabled helper="partner/account/customerIsNotPartner" />
+                    <order>20</order>
+                </action> -->
+                <action method="addLink" translate="label" module="solutionpartner">
+                    <name>reports</name>
+                    <path>solutionpartner/customer/reports</path>
+                    <label>Reports</label>
+                    <disabled helper="solutionpartner/customer/customerIsNotPartner" />
+                    <order>30</order>
+                </action>
+                <action method="addLink" translate="label" module="solutionpartner">
+                    <name>setting</name>
+                    <path>solutionpartner/customer/setting</path>
+                    <label>Settings</label>
+                    <disabled helper="solutionpartner/customer/customerIsNotPartner" />
+                    <order>40</order>
+                </action>
+                <action method="addLink" translate="label" module="solutionpartner">
+                    <name>back_account</name>
+                    <path>customer/account/</path>
+                    <label>Back To Account Dashboard</label>
+                    <disabled>0</disabled>
+                    <order>50</order>
+                </action>
+            </block>
+            <block type="checkout/cart_sidebar" name="cart_sidebar" template="checkout/cart/sidebar.phtml">
+                <action method="addItemRender"><type>simple</type><block>checkout/cart_item_renderer</block><template>checkout/cart/sidebar/default.phtml</template></action>
+                <action method="addItemRender"><type>grouped</type><block>checkout/cart_item_renderer_grouped</block><template>checkout/cart/sidebar/default.phtml</template></action>
+                <action method="addItemRender"><type>configurable</type><block>checkout/cart_item_renderer_configurable</block><template>checkout/cart/sidebar/default.phtml</template></action>
+            </block>
+        </reference>
+    </solutionpartner_default>
+
+    <solutionpartner_customer_index>
+        <update handle="solutionpartner_default" />
+        <reference name="root">
+            <action method="setTemplate"><template>page/2columns-left.phtml</template></action>
+        </reference>
+        <reference name="head" translate="title">
+            <action method="setTitle">
+                <title>Solution Partner</title>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="solutionpartner/customer_welcome" name="customer_welcome" ifconfig="solutionpartner/general/enable">
+                <block type="core/template" name="solutionpartner_program" template="cms/content_heading.html"/>
+            </block>
+        </reference>
+    </solutionpartner_customer_index>
+
+    <solutionpartner_customer_reports>
+        <update handle="solutionpartner_default" />
+        <reference name="root">
+            <action method="setTemplate"><template>page/2columns-left.phtml</template></action>
+        </reference>
+        <reference name="head" translate="title">
+            <action method="setTitle">
+                <title>Reports</title>
+            </action>
+            <!-- <action method="removeItem">
+                <type>js</type>
+                <name>magestore/ajaxcart.js</name>
+                <params />
+            </action> -->
+        </reference>
+        <reference name="content">
+            <block type="solutionpartner/customer_reports" name="customer_reports" template="solutionpartner/customer/reports.phtml">
+                <block type="solutionpartner/customer_reports_miniform" name="customer_reports_miniform" template="solutionpartner/customer/reports/miniform.phtml" />
+                <block type="solutionpartner/customer_reports_sales" name="customer_reports_sales" template="solutionpartner/customer/reports/sales.phtml" />
+            </block>
+        </reference>
+    </solutionpartner_customer_reports>
+
+    <solutionpartner_customer_setting>
+        <!-- <reference name="head">
+            <action method="addCss">
+                <styleSheet>css/magestore/solutionpartner.css</styleSheet>
+            </action>
+        </reference> -->
+        <update handle="solutionpartner_default" />
+        <reference name="root">
+            <action method="setTemplate"><template>page/2columns-left.phtml</template></action>
+        </reference>
+        <reference name="head" translate="title">
+            <action method="setTitle">
+                <title>Setting</title>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="solutionpartner/customer_setting" name="solutionpartner-setting" template="solutionpartner/customer/setting.phtml" />
+        </reference>
+    </solutionpartner_customer_setting>
+
+    <solutionpartner_directory_index>
+        <label>Directory Solution Partner</label>
+        <reference name="root">
+            <action method="setTemplate"><template>page/2columns-left.phtml</template></action>
+        </reference>
+        <reference name="head" translate="title">
+            <action method="setTitle">
+                <title>Directory Solution Partner</title>
+            </action>
+        </reference>
+        <reference name="left">
+            <block type="solutionpartner/directory_navigation" name="directory.leftnav" after="currency" template="solutionpartner/directory/navigation/left.phtml"/>
+        </reference>
+        <reference name="content">
+            <block type="solutionpartner/directory_view" name="directory_view" ifconfig="solutionpartner/general/enable" template="solutionpartner/directory/directory/view.phtml">
+                <block type="solutionpartner/directory_list" name="directory_list" ifconfig="solutionpartner/general/enable" template="solutionpartner/directory/directory/list.phtml">
+                    <!--<block type="catalog/product_list_toolbar" name="product_list_toolbar" template="catalog/product/list/toolbar.phtml">-->
+                        <!--<block type="page/html_pager" name="product_list_toolbar_pager"/>-->
+                        <!--&lt;!&ndash; The following code shows how to set your own pager increments &ndash;&gt;-->
+                        <!--&lt;!&ndash;-->
+                            <!--<action method="setDefaultListPerPage"><limit>4</limit></action>-->
+                            <!--<action method="setDefaultGridPerPage"><limit>9</limit></action>-->
+                            <!--<action method="addPagerLimit"><mode>list</mode><limit>2</limit></action>-->
+                            <!--<action method="addPagerLimit"><mode>list</mode><limit>4</limit></action>-->
+                            <!--<action method="addPagerLimit"><mode>list</mode><limit>6</limit></action>-->
+                            <!--<action method="addPagerLimit"><mode>list</mode><limit>8</limit></action>-->
+                            <!--<action method="addPagerLimit" translate="label"><mode>list</mode><limit>all</limit><label>All</label></action>-->
+                        <!--&ndash;&gt;-->
+                    <!--</block>-->
+                    <!--<action method="addColumnCountLayoutDepend"><layout>empty</layout><count>6</count></action>-->
+                    <!--<action method="addColumnCountLayoutDepend"><layout>one_column</layout><count>5</count></action>-->
+                    <!--<action method="addColumnCountLayoutDepend"><layout>two_columns_left</layout><count>4</count></action>-->
+                    <!--<action method="addColumnCountLayoutDepend"><layout>two_columns_right</layout><count>4</count></action>-->
+                    <!--<action method="addColumnCountLayoutDepend"><layout>three_columns</layout><count>3</count></action>-->
+                    <!--<action method="setToolbarBlockName"><name>product_list_toolbar</name></action>-->
+                </block>
+            </block>
+        </reference>
+    </solutionpartner_directory_index>
+    <solutionpartner_directory_partner>
+        <label>Directory Solution Partner</label>
+        <reference name="root">
+            <action method="setTemplate"><template>page/2columns-right.phtml</template></action>
+        </reference>
+        <reference name="head" translate="title">
+            <action method="setTitle">
+                <title>Solution Partner</title>
+            </action>
+        </reference>
+        <reference name="left">
+
+        </reference>
+        <reference name="content">
+            <block type="solutionpartner/directory_partner_view" name="directory.partner.view" template="solutionpartner/directory/partner/view.phtml">
+                <block type="solutionpartner/directory_partner_view_media" name="directory.partner.view.media" as="media" template="solutionpartner/directory/partner/view/media.phtml"/>
+            <block type="solutionpartner/directory_partner_view_description" name="directory.partner.view.description" as="description" template="solutionpartner/directory/partner/view/description.phtml"></block>
+            </block>
+        </reference>
+    </solutionpartner_directory_partner>
 </layout>

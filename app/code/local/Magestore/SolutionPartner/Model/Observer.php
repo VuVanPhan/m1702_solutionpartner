@@ -38,4 +38,18 @@ class Magestore_SolutionPartner_Model_Observer
         $action = $observer->getEvent()->getControllerAction();
         return $this;
     }
+
+    public function addToTopmenu(Varien_Event_Observer $observer)
+    {
+        $menu = $observer->getMenu();
+        $tree = $menu->getTree();
+
+        $node = new Varien_Data_Tree_Node(array(
+            'name'   => 'Directory',
+            'id'     => 'Directory',
+            'url'    => Mage::getUrl('solutionpartner/directory'), // point somewhere
+        ), 'id', $tree, $menu);
+
+        $menu->addChild($node);
+    }
 }

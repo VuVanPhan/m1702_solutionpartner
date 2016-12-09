@@ -1,0 +1,5 @@
+<?php
+class Magestore_SolutionPartner_Block_Directory_Partner_View_Description extends Magestore_SolutionPartner_Block_Directory_Partner_View
+{
+
+}

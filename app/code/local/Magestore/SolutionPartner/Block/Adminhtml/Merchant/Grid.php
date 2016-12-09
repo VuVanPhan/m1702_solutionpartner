@@ -84,12 +84,12 @@ class Magestore_SolutionPartner_Block_Adminhtml_Merchant_Grid extends Mage_Admin
             'options' => Mage::helper('solutionpartner')->getCountryList(),
         ));
 
-        $this->addColumn('service', array(
-            'header' => Mage::helper('solutionpartner')->__('Service'),
+        $this->addColumn('industry', array(
+            'header' => Mage::helper('solutionpartner')->__('Industry'),
             'align' => 'left',
-            'index' => 'service',
+            'index' => 'industry',
             'type' => 'options',
-            'options' => Mage::helper('solutionpartner')->getServiceList(),
+            'options' => Mage::helper('solutionpartner')->getIndustryList(),
         ));
 
         $this->addColumn('budget', array(
@@ -162,12 +162,12 @@ class Magestore_SolutionPartner_Block_Adminhtml_Merchant_Grid extends Mage_Admin
         $statuses = Mage::getSingleton('solutionpartner/status')->getOptionArray();
 
         array_unshift($statuses, array('label'=>'', 'value'=>''));
-        $this->getMassactionBlock()->addItem('status', array(
+        $this->getMassactionBlock()->addItem('solutionpartner_status', array(
             'label'=> Mage::helper('solutionpartner')->__('Change status'),
             'url'    => $this->getUrl('*/*/massStatus', array('_current'=>true)),
             'additional' => array(
                 'visibility' => array(
-                    'name'    => 'status',
+                    'name'    => 'solutionpartner_status',
                     'type'    => 'select',
                     'class'    => 'required-entry',
                     'label'    => Mage::helper('solutionpartner')->__('Status'),

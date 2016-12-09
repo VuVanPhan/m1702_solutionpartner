@@ -55,17 +55,17 @@ class Magestore_SolutionPartner_Block_Adminhtml_Solutionpartner_Edit_Tab_Gerenal
             'name'          => 'name',
         ));
 
-        $fieldset->addField('compane_name', 'text', array(
-            'label'         => Mage::helper('solutionpartner')->__('Compane Name'),
+        $fieldset->addField('company_name', 'text', array(
+            'label'         => Mage::helper('solutionpartner')->__('Company Name'),
             'class'         => 'required-entry',
             'required'      => true,
-            'name'          => 'compane_name',
+            'name'          => 'company_name',
         ));
 
-        $fieldset->addField('compane_logo', 'image', array(
-            'label'         => Mage::helper('solutionpartner')->__('Compane Logo'),
+        $fieldset->addField('company_logo', 'image', array(
+            'label'         => Mage::helper('solutionpartner')->__('Company Logo'),
             'required'      => false,
-            'name'          => 'compane_logo',
+            'name'          => 'company_logo',
         ));
 
         $fieldset->addField('website', 'text', array(
@@ -84,15 +84,9 @@ class Magestore_SolutionPartner_Block_Adminhtml_Solutionpartner_Edit_Tab_Gerenal
 
         $fieldset->addField('phone', 'text', array(
             'label'         => Mage::helper('solutionpartner')->__('Phone'),
-            'class'         => 'validate-greater-than-zero',
-            'required'      => false,
+            'class'         => 'required-entry validate-greater-than-zero',
+            'required'      => true,
             'name'          => 'phone',
-        ));
-
-        $fieldset->addField('address', 'textarea', array(
-            'label'         => Mage::helper('solutionpartner')->__('Address'),
-            'required'      => false,
-            'name'          => 'address',
         ));
 
         $fieldset->addField('country', 'select', array(
@@ -104,36 +98,23 @@ class Magestore_SolutionPartner_Block_Adminhtml_Solutionpartner_Edit_Tab_Gerenal
 
         $fieldset->addField('depscription', 'textarea', array(
             'label'         => Mage::helper('solutionpartner')->__('Depscription'),
-            'required'      => false,
+            'class'         => 'required-entry',
+            'required'      => true,
             'name'          => 'depscription',
-        ));
-
-        $fieldset->addField('founded_in', 'text', array(
-            'label'         => Mage::helper('solutionpartner')->__('Founded In'),
-            'class'         => 'validate-zero-or-greater validate-number',
-            'required'      => false,
-            'name'          => 'founded_in',
         ));
 
         $fieldset->addField('certified_dev', 'text', array(
             'label'         => Mage::helper('solutionpartner')->__('Certified Dev'),
-            'class'         => 'validate-zero-or-greater validate-number',
-            'required'      => false,
+            'class'         => 'required-entry validate-zero-or-greater validate-number',
+            'required'      => true,
             'name'          => 'certified_dev',
         ));
 
-        $fieldset->addField('number_employees', 'select', array(
-            'label'         => Mage::helper('solutionpartner')->__('Number Employees'),
+        $fieldset->addField('industry', 'select', array(
+            'label'         => Mage::helper('solutionpartner')->__('Industry'),
             'required'      => false,
-            'name'          => 'number_employees',
-            'values'        => Mage::helper('solutionpartner')->getNumberEmployeesOption()
-        ));
-
-        $fieldset->addField('service', 'select', array(
-            'label'         => Mage::helper('solutionpartner')->__('Service'),
-            'required'      => false,
-            'name'          => 'service',
-            'values'        => Mage::helper('solutionpartner')->getServiceOption()
+            'name'          => 'industry',
+            'values'        => Mage::helper('solutionpartner')->getIndustryOption()
         ));
 
         $fieldset->addField('project_year', 'text', array(
@@ -157,10 +138,10 @@ class Magestore_SolutionPartner_Block_Adminhtml_Solutionpartner_Edit_Tab_Gerenal
             'values'        => Mage::helper('solutionpartner')->getHourlyRateOption()
         ));
 
-        $fieldset->addField('status', 'select', array(
-            'label'        => Mage::helper('solutionpartner')->__('Status'),
-            'name'        => 'status',
-            'values'    => Mage::getSingleton('solutionpartner/status')->getOptionHash(),
+        $fieldset->addField('solutionpartner_status', 'select', array(
+            'label'         => Mage::helper('solutionpartner')->__('Status'),
+            'name'          => 'solutionpartner_status',
+            'values'        => Mage::getSingleton('solutionpartner/status')->getOptionHash(),
         ));
 
         $form->setValues($data);

@@ -1,0 +1,16 @@
+<?php
+$helper = Mage::helper('solutionpartner');
+?>
+<dl id="narrow-by-list">
+    <dt><?php echo $this->__('Country') ?></dt>
+    <dd>
+        <select name="country" title="<?php echo $this->__('Located country') ?>" id="solutionpartner:country" class="input-text required-entry" >
+            <?php echo $this->getCountryOption() ?>
+        </select>
+    </dd>
+
+    <dt><?php echo $this->__('Budget') ?></dt>
+    <dd></dd>
+
+    <dt><?php echo $this->__('Industry') ?></dt>
+</dl>

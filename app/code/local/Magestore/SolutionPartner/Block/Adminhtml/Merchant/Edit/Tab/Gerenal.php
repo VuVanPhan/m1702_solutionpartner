@@ -98,11 +98,11 @@ class Magestore_SolutionPartner_Block_Adminhtml_Merchant_Edit_Tab_Gerenal extend
             'options'       => Mage::helper('solutionpartner')->getCountryList(),
         ));
 
-        $fieldset->addField('service', 'select', array(
-            'label'         => Mage::helper('solutionpartner')->__('Service'),
+        $fieldset->addField('industry', 'select', array(
+            'label'         => Mage::helper('solutionpartner')->__('Industry'),
             'required'      => false,
-            'name'          => 'service',
-            'values'        => Mage::helper('solutionpartner')->getServiceOption()
+            'name'          => 'industry',
+            'values'        => Mage::helper('solutionpartner')->getIndustryOption()
         ));
 
         $fieldset->addField('budget', 'select', array(
